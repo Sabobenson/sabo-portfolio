@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Routing Lab | Sabo Benson</title>
+<link rel="stylesheet" href="../style.css">
+</head>
 
+<body>
+
+<header>
+<h1>Routing Lab</h1>
+<p>Basic Routing Between Two Networks</p>
+</header>
+
+<section>
+
+<h2>Project Overview</h2>
+
+<p>
+This project demonstrates how a router enables communication between
+two different IP networks. Static routing configuration was used
+to allow devices in separate networks to exchange packets successfully.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>Network Topology</h2>
+
+<p>The network consists of:</p>
+
+<ul>
+<li>2 PCs</li>
+<li>1 Router</li>
+<li>2 Switches</li>
+<li>2 Different IP Networks</li>
+</ul>
+
+<p><strong>Topology Diagram:</strong></p>
+
+<img src="../assets/diagrams/routing-topology.png" width="600">
+
+</section>
+
+
+<section>
+
+<h2>IP Addressing Scheme</h2>
+
+<ul>
+<li>Network 1: 192.168.1.0 /24</li>
+<li>Network 2: 192.168.2.0 /24</li>
+<li>Router Interface 1: 192.168.1.1</li>
+<li>Router Interface 2: 192.168.2.1</li>
+</ul>
+
+</section>
+
+
+<section>
+
+<h2>Router Configuration</h2>
+
+<pre>
+
+Router(config)# interface g0/0
+Router(config-if)# ip address 192.168.1.1 255.255.255.0
+Router(config-if)# no shutdown
+
+Router(config)# interface g0/1
+Router(config-if)# ip address 192.168.2.1 255.255.255.0
+Router(config-if)# no shutdown
+
+</pre>
+
+</section>
+
+
+<section>
+
+<h2>Testing Connectivity</h2>
+
+<p>
+Ping tests were performed between PC1 and PC2 to verify successful
+routing between the two networks.
+</p>
+
+<p><strong>Ping Result:</strong></p>
+
+<img src="../assets/images/ping-test.png" width="600">
+
+</section>
+
+
+<section>
+
+<h2>Conclusion</h2>
+
+<p>
+The experiment confirmed that routers enable communication between
+separate IP networks. Proper IP addressing and interface configuration
+are essential for successful packet forwarding.
+</p>
+
+</section>
+
+</body>
+</html>
