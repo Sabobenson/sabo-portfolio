@@ -2,102 +2,105 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Routing Lab | Sabo Benson</title>
-<link rel="stylesheet" href="../style.css">
+<title>Small Office Network Routing Setup | Sabo Benson</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background-color: #0b1a2b;
+    color: #e6edf3;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: #4fc3f7;
+}
+
+section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #13263a;
+    border-radius: 10px;
+}
+
+code {
+    display: block;
+    background: #0d1b2a;
+    padding: 15px;
+    border-radius: 8px;
+    color: #90caf9;
+    overflow-x: auto;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+a {
+    color: #4fc3f7;
+}
+</style>
+
 </head>
 
 <body>
 
-<header>
-<h1>Routing Lab Project</h1>
-<p>Interconnecting Two Networks Using a Router</p>
-</header>
+<h1>Small Office Network Routing Setup</h1>
+<p><strong>By Sabo Benson – Network Solutions Focused Engineer</strong></p>
 
 <section>
+<h2>1. Problem Statement</h2>
+<p>
+In a small office environment, two departments were operating on separate networks.
+Devices in these networks could not communicate due to lack of routing, leading to
+inefficiency and poor resource sharing.
+</p>
+</section>
 
-<h2>1. Introduction</h2>
+<section>
+<h2>2. Solution</h2>
+<p>
+A router was configured to enable communication between the two networks.
+Proper IP addressing and interface configuration were implemented to ensure
+reliable connectivity.
+</p>
+
+<ul>
+<li>Designed network topology</li>
+<li>Configured router interfaces</li>
+<li>Assigned IP addresses</li>
+<li>Verified connectivity</li>
+</ul>
+</section>
+
+<section>
+<h2>3. Network Topology</h2>
 
 <p>
-Modern networks require communication between multiple isolated subnets.
-This project demonstrates how a router is configured to enable communication
-between two separate IP networks using basic Layer 3 routing principles.
+PC1 → Switch1 → Router → Switch2 → PC2
 </p>
+
+<p><em>Add your topology image here (assets/images/topology.png)</em></p>
 
 </section>
 
 <section>
-
-<h2>2. Objective</h2>
+<h2>4. IP Addressing Scheme</h2>
 
 <ul>
-<li>To design a simple multi-network topology</li>
-<li>To configure router interfaces with correct IP addressing</li>
-<li>To verify connectivity between two different networks</li>
+<li>PC1: 192.168.1.2 /24</li>
+<li>Router G0/0: 192.168.1.1</li>
+<li>Router G0/1: 192.168.2.1</li>
+<li>PC2: 192.168.2.2 /24</li>
 </ul>
 
 </section>
 
 <section>
-
-<h2>3. Network Topology</h2>
-
-<p>
-The network consists of two LANs connected through a router.
-Each LAN contains a PC and a switch, forming two distinct subnets.
-</p>
-
-<p><strong>Topology Diagram:</strong></p>
-
-<img src="../assets/diagrams/routing-topology.png" width="650">
-
-</section>
-
-<section>
-
-<h2>4. IP Addressing Scheme</h2>
-
-<table border="1" cellpadding="10">
-<tr>
-<th>Device</th>
-<th>Interface</th>
-<th>IP Address</th>
-</tr>
-
-<tr>
-<td>PC1</td>
-<td>NIC</td>
-<td>192.168.1.2 /24</td>
-</tr>
-
-<tr>
-<td>Router</td>
-<td>G0/0</td>
-<td>192.168.1.1 /24</td>
-</tr>
-
-<tr>
-<td>Router</td>
-<td>G0/1</td>
-<td>192.168.2.1 /24</td>
-</tr>
-
-<tr>
-<td>PC2</td>
-<td>NIC</td>
-<td>192.168.2.2 /24</td>
-</tr>
-
-</table>
-
-</section>
-
-<section>
-
 <h2>5. Configuration</h2>
 
-<h3>Router Configuration</h3>
-
-<pre>
+<code>
 enable
 configure terminal
 
@@ -110,73 +113,70 @@ ip address 192.168.2.1 255.255.255.0
 no shutdown
 
 end
-</pre>
-
-<h3>PC Configuration</h3>
-
-<p><strong>PC1</strong></p>
-<ul>
-<li>IP: 192.168.1.2</li>
-<li>Gateway: 192.168.1.1</li>
-</ul>
-
-<p><strong>PC2</strong></p>
-<ul>
-<li>IP: 192.168.2.2</li>
-<li>Gateway: 192.168.2.1</li>
-</ul>
+</code>
 
 </section>
 
 <section>
-
 <h2>6. Testing & Verification</h2>
 
-<p>
-Connectivity between the two networks was verified using ICMP (ping).
-A successful response confirmed that routing was correctly configured.
-</p>
+<p>Ping test from PC1 to PC2:</p>
 
-<p><strong>Ping Result:</strong></p>
-
-<img src="../assets/images/ping-test.png" width="650">
-
-</section>
-
-<section>
-
-<h2>7. Challenges Encountered</h2>
-
-<ul>
-<li>Forgetting to enable router interfaces (no shutdown)</li>
-<li>Incorrect default gateway configuration</li>
-<li>IP addressing mistakes</li>
-</ul>
-
-</section>
-
-<section>
-
-<h2>8. Conclusion</h2>
+<code>
+ping 192.168.2.2
+</code>
 
 <p>
-The experiment successfully demonstrated how routers facilitate communication
-between different IP networks. Proper configuration of interfaces and addressing
-is essential for network connectivity.
+Result: Successful replies received. This confirms that routing between
+the two networks is functioning correctly.
 </p>
 
 </section>
 
 <section>
-
-<h2>9. Skills Demonstrated</h2>
+<h2>7. Skills Demonstrated</h2>
 
 <ul>
-<li>IP Addressing and Subnetting</li>
-<li>Router Configuration</li>
-<li>Network Troubleshooting</li>
-<li>Basic Routing Concepts</li>
+<li>Router configuration using CLI</li>
+<li>IP addressing and subnetting</li>
+<li>Basic network troubleshooting</li>
+<li>Network simulation using Packet Tracer</li>
 </ul>
+
+</section>
+
+<section>
+<h2>8. Real-World Application</h2>
+
+<p>
+This setup can be used in small offices, schools, and startup environments
+where multiple departments need to communicate across different networks.
+</p>
+
+</section>
+
+<section>
+<h2>9. Services I Offer</h2>
+
+<ul>
+<li>Small office network setup</li>
+<li>Router configuration</li>
+<li>IP addressing and subnetting</li>
+<li>Network troubleshooting</li>
+</ul>
+
+</section>
+
+<section>
+<h2>10. Need a Network Setup?</h2>
+
+<p>
+I can help design, configure and troubleshoot your network systems.
+Feel free to contact me:
+</p>
+
+<p>Email: sabobenson20@gmail.com</p>
+<p>Location: Tanzania</p>
 
 </section>
 
