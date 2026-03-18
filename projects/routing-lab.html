@@ -9,101 +9,174 @@
 <body>
 
 <header>
-<h1>Routing Lab</h1>
-<p>Basic Routing Between Two Networks</p>
+<h1>Routing Lab Project</h1>
+<p>Interconnecting Two Networks Using a Router</p>
 </header>
 
 <section>
 
-<h2>Project Overview</h2>
+<h2>1. Introduction</h2>
 
 <p>
-This project demonstrates how a router enables communication between
-two different IP networks. Static routing configuration was used
-to allow devices in separate networks to exchange packets successfully.
+Modern networks require communication between multiple isolated subnets.
+This project demonstrates how a router is configured to enable communication
+between two separate IP networks using basic Layer 3 routing principles.
 </p>
 
 </section>
 
+<section>
+
+<h2>2. Objective</h2>
+
+<ul>
+<li>To design a simple multi-network topology</li>
+<li>To configure router interfaces with correct IP addressing</li>
+<li>To verify connectivity between two different networks</li>
+</ul>
+
+</section>
 
 <section>
 
-<h2>Network Topology</h2>
+<h2>3. Network Topology</h2>
 
-<p>The network consists of:</p>
-
-<ul>
-<li>2 PCs</li>
-<li>1 Router</li>
-<li>2 Switches</li>
-<li>2 Different IP Networks</li>
-</ul>
+<p>
+The network consists of two LANs connected through a router.
+Each LAN contains a PC and a switch, forming two distinct subnets.
+</p>
 
 <p><strong>Topology Diagram:</strong></p>
 
-<img src="../assets/diagrams/routing-topology.png" width="600">
+<img src="../assets/diagrams/routing-topology.png" width="650">
 
 </section>
 
+<section>
+
+<h2>4. IP Addressing Scheme</h2>
+
+<table border="1" cellpadding="10">
+<tr>
+<th>Device</th>
+<th>Interface</th>
+<th>IP Address</th>
+</tr>
+
+<tr>
+<td>PC1</td>
+<td>NIC</td>
+<td>192.168.1.2 /24</td>
+</tr>
+
+<tr>
+<td>Router</td>
+<td>G0/0</td>
+<td>192.168.1.1 /24</td>
+</tr>
+
+<tr>
+<td>Router</td>
+<td>G0/1</td>
+<td>192.168.2.1 /24</td>
+</tr>
+
+<tr>
+<td>PC2</td>
+<td>NIC</td>
+<td>192.168.2.2 /24</td>
+</tr>
+
+</table>
+
+</section>
 
 <section>
 
-<h2>IP Addressing Scheme</h2>
+<h2>5. Configuration</h2>
 
+<h3>Router Configuration</h3>
+
+<pre>
+enable
+configure terminal
+
+interface g0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+
+interface g0/1
+ip address 192.168.2.1 255.255.255.0
+no shutdown
+
+end
+</pre>
+
+<h3>PC Configuration</h3>
+
+<p><strong>PC1</strong></p>
 <ul>
-<li>Network 1: 192.168.1.0 /24</li>
-<li>Network 2: 192.168.2.0 /24</li>
-<li>Router Interface 1: 192.168.1.1</li>
-<li>Router Interface 2: 192.168.2.1</li>
+<li>IP: 192.168.1.2</li>
+<li>Gateway: 192.168.1.1</li>
+</ul>
+
+<p><strong>PC2</strong></p>
+<ul>
+<li>IP: 192.168.2.2</li>
+<li>Gateway: 192.168.2.1</li>
 </ul>
 
 </section>
 
-
 <section>
 
-<h2>Router Configuration</h2>
-
-<pre>
-
-Router(config)# interface g0/0
-Router(config-if)# ip address 192.168.1.1 255.255.255.0
-Router(config-if)# no shutdown
-
-Router(config)# interface g0/1
-Router(config-if)# ip address 192.168.2.1 255.255.255.0
-Router(config-if)# no shutdown
-
-</pre>
-
-</section>
-
-
-<section>
-
-<h2>Testing Connectivity</h2>
+<h2>6. Testing & Verification</h2>
 
 <p>
-Ping tests were performed between PC1 and PC2 to verify successful
-routing between the two networks.
+Connectivity between the two networks was verified using ICMP (ping).
+A successful response confirmed that routing was correctly configured.
 </p>
 
 <p><strong>Ping Result:</strong></p>
 
-<img src="../assets/images/ping-test.png" width="600">
+<img src="../assets/images/ping-test.png" width="650">
 
 </section>
 
+<section>
+
+<h2>7. Challenges Encountered</h2>
+
+<ul>
+<li>Forgetting to enable router interfaces (no shutdown)</li>
+<li>Incorrect default gateway configuration</li>
+<li>IP addressing mistakes</li>
+</ul>
+
+</section>
 
 <section>
 
-<h2>Conclusion</h2>
+<h2>8. Conclusion</h2>
 
 <p>
-The experiment confirmed that routers enable communication between
-separate IP networks. Proper IP addressing and interface configuration
-are essential for successful packet forwarding.
+The experiment successfully demonstrated how routers facilitate communication
+between different IP networks. Proper configuration of interfaces and addressing
+is essential for network connectivity.
 </p>
+
+</section>
+
+<section>
+
+<h2>9. Skills Demonstrated</h2>
+
+<ul>
+<li>IP Addressing and Subnetting</li>
+<li>Router Configuration</li>
+<li>Network Troubleshooting</li>
+<li>Basic Routing Concepts</li>
+</ul>
 
 </section>
 
