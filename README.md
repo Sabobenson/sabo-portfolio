@@ -2,7 +2,7 @@
 Telecommunication Engineering Graduate  
 
 ## About Me
-I am a telecommunication engineering student focused on network design, routing systems, wireless communication and infrastructure solutions.
+I am a telecommunication engineering focused on network design, routing systems, wireless communication and infrastructure solutions.
 
 My goal is to build reliable network and connectivity solutions for businesses and institutions.
 
