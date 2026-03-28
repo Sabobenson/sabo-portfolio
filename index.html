@@ -2,145 +2,201 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Routing Project | Sabo Benson</title>
+<title>Sabo Benson | Network Engineer</title>
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 40px;
-    line-height: 1.6;
-    background-color: #f9f9f9;
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-h1, h2 {
-    color: #333;
+/* BODY */
+body{
+    font-family: 'Segoe UI', sans-serif;
+    background:#020617;
+    color:#e2e8f0;
+    line-height:1.7;
 }
 
-section {
-    margin-bottom: 30px;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
+/* HEADER */
+header{
+    text-align:center;
+    padding:80px 20px;
+    background:linear-gradient(to bottom, #020617, #0f172a);
 }
 
-code {
-    background: #eee;
-    padding: 10px;
-    display: block;
-    border-radius: 5px;
+header img{
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    margin-bottom:15px;
+    border:3px solid #38bdf8;
+    object-fit:cover;
 }
 
-ul {
-    padding-left: 20px;
+header h1{
+    font-size:42px;
+    color:#38bdf8;
 }
+
+header p{
+    color:#94a3b8;
+}
+
+/* SECTION */
+section{
+    max-width:1000px;
+    margin:60px auto;
+    padding:0 20px;
+}
+
+h2{
+    color:#38bdf8;
+    margin-bottom:20px;
+   /* border-left:4px solid #38bdf8; */
+    padding-left:10px;
+}
+
+/* CARD */
+.card{
+    background:#0f172a;
+    padding:20px;
+    border-radius:10px;
+    border:1px solid #1e293b;
+    margin-top:15px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+/* LIST */
+ul{
+    list-style:none;
+}
+
+li{
+    margin-bottom:10px;
+}
+
+/* LINKS */
+a{
+    color:#38bdf8;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+/* PROJECT CARD */
+.project{
+    background:#13263a;
+    padding:15px;
+    border-radius:8px;
+    margin-top:15px;
+}
+
+/* CONTACT */
+.contact p{
+    margin-bottom:8px;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:40px;
+    color:#64748b;
+}
+
 </style>
 
 </head>
 
 <body>
 
-<h1>Small Office Network Routing Setup</h1>
-<p><strong>By Sabo Benson – Telecommunication & Network Engineer</strong></p>
+<header>
+
+<!-- BADILISHA HII NA PIC YAKO -->
+<img src="assets/images/profile.jpg" alt="Profile Image">
+
+<h1>Sabo Benson</h1>
+<p>Network Engineer | Routing • IP Addressing • Troubleshooting</p>
+
+</header>
 
 <section>
-<h2>Problem</h2>
+<h2>About</h2>
 <p>
-Devices in two different networks were unable to communicate due to lack of routing.
-This limited data sharing between departments in a small office environment.
+I design and configure reliable network solutions for small offices,
+including routing, IP addressing and troubleshooting connectivity issues.
 </p>
 </section>
 
 <section>
-<h2>Solution</h2>
+<h2>Core Skills</h2>
+
+<div class="card">
+<ul>
+<li>Router Configuration (Cisco CLI)</li>
+<li>IP Addressing & Subnetting</li>
+<li>Network Troubleshooting</li>
+<li>Packet Tracer Simulation</li>
+<li>Small Office Network Setup</li>
+</ul>
+</div>
+
+</section>
+
+<section>
+<h2>Projects</h2>
+
+<div class="project">
+<h3>
+<a href="projects/routing-lab.html">
+Small Office Network Routing Setup
+</a>
+</h3>
 <p>
-A router was configured to enable communication between the two networks using proper IP addressing and interface configuration.
+Configured a router to enable communication between two networks using IP addressing and routing.
 </p>
+</div>
 
-<ul>
-<li>Designed network topology</li>
-<li>Configured router interfaces</li>
-<li>Assigned IP addresses</li>
-<li>Tested connectivity</li>
-</ul>
-</section>
-
-<section>
-<h2>Network Topology</h2>
-<p>
-PC1 → Switch1 → Router → Switch2 → PC2
-</p>
-
-<p><em>(topology image here)</em></p>
-</section>
-
-<section>
-<h2>IP Addressing</h2>
-
-<ul>
-<li>PC1: 192.168.1.2 /24</li>
-<li>Router G0/0: 192.168.1.1</li>
-<li>Router G0/1: 192.168.2.1</li>
-<li>PC2: 192.168.2.2 /24</li>
-</ul>
-
-</section>
-
-<section>
-<h2>Configuration</h2>
-
-<code>
-enable
-configure terminal
-
-interface g0/0
-ip address 192.168.1.1 255.255.255.0
-no shutdown
-
-interface g0/1
-ip address 192.168.2.1 255.255.255.0
-no shutdown
-
-end
-</code>
-
-</section>
-
-<section>
-<h2>Testing</h2>
-
-<p>Ping test from PC1 to PC2:</p>
-
-<code>
-ping 192.168.2.2
-</code>
-
-<p>Result: Successful communication with no packet loss.</p>
-
-</section>
-
-<section>
-<h2>Skills Demonstrated</h2>
-
-<ul>
-<li>Network design</li>
-<li>Routing configuration</li>
-<li>IP addressing</li>
-<li>Troubleshooting</li>
-</ul>
+<!-- PROJECT MPYA UTAONGEZA HAPA BAADAE -->
 
 </section>
 
 <section>
 <h2>Services I Offer</h2>
 
+<div class="card">
 <ul>
 <li>Small office network setup</li>
-<li>Router configuration</li>
+<li>Router and switch configuration</li>
 <li>IP addressing and subnetting</li>
 <li>Network troubleshooting</li>
 </ul>
+</div>
 
 </section>
+
+<section class="contact">
+<h2>Contact</h2>
+
+<p>Email: sabobenson20@gmail.com</p>
+<p>Phone: 0745866949</p>
+<p>Location: Tanzania</p>
+
+</section>
+
+<footer>
+<p>© 2026 Sabo Benson</p>
+</footer>
 
 </body>
 </html>
