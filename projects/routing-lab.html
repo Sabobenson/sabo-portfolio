@@ -4,41 +4,20 @@
 <meta charset="UTF-8">
 <title>Small Office Network Routing Setup | Sabo Benson</title>
 
+<link rel="stylesheet" href="../style.css">
 <style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 40px;
-    background-color: #0b1a2b;
-    color: #e6edf3;
-    line-height: 1.6;
-}
-
-h1, h2, h3 {
+h1{
+    text-align: center;
     color: #4fc3f7;
 }
-
+h2, h3 {
+    color: #4fc3f7;
+}
 section {
     margin-bottom: 30px;
     padding: 20px;
     background: #13263a;
     border-radius: 10px;
-}
-
-code {
-    display: block;
-    background: #0d1b2a;
-    padding: 15px;
-    border-radius: 8px;
-    color: #90caf9;
-    overflow-x: auto;
-}
-
-ul {
-    padding-left: 20px;
-}
-
-a {
-    color: #4fc3f7;
 }
 </style>
 
@@ -76,31 +55,63 @@ reliable connectivity.
 
 <section>
 <h2>3. Network Topology</h2>
-
 <p>
-PC1 → Switch1 → Router → Switch2 → PC2
+The network consists of two LANs connected through a router.
+Each LAN contains a PC and a switch, forming two distinct subnets.
 </p>
 
-<p><em>Add your topology image here (assets/images/topology.png)</em></p>
+<p><strong>Topology Diagram:</strong></p>
+
+<img src="../assets/diagrams/routing-topology.png" width="650">
+
+</section>
 
 </section>
 
 <section>
 <h2>4. IP Addressing Scheme</h2>
 
-<ul>
-<li>PC1: 192.168.1.2 /24</li>
-<li>Router G0/0: 192.168.1.1</li>
-<li>Router G0/1: 192.168.2.1</li>
-<li>PC2: 192.168.2.2 /24</li>
-</ul>
+<table border="1" cellpadding="10">
+<tr>
+<th>Device</th>
+<th>Interface</th>
+<th>IP Address</th>
+</tr>
+
+<tr>
+<td>PC1</td>
+<td>NIC</td>
+<td>192.168.1.2 /24</td>
+</tr>
+
+<tr>
+<td>Router</td>
+<td>G0/0</td>
+<td>192.168.1.1 /24</td>
+</tr>
+
+<tr>
+<td>Router</td>
+<td>G0/1</td>
+<td>192.168.2.1 /24</td>
+</tr>
+
+<tr>
+<td>PC2</td>
+<td>NIC</td>
+<td>192.168.2.2 /24</td>
+</tr>
+
+</table>
 
 </section>
 
 <section>
 <h2>5. Configuration</h2>
 
-<code>
+<h3>Router Configuration</h3>
+
+<pre>
 enable
 configure terminal
 
@@ -113,7 +124,21 @@ ip address 192.168.2.1 255.255.255.0
 no shutdown
 
 end
-</code>
+</pre>
+
+<h3>PC Configuration</h3>
+
+<p><strong>PC1</strong></p>
+<ul>
+<li>IP: 192.168.1.2</li>
+<li>Gateway: 192.168.1.1</li>
+</ul>
+
+<p><strong>PC2</strong></p>
+<ul>
+<li>IP: 192.168.2.2</li>
+<li>Gateway: 192.168.2.1</li>
+</ul>
 
 </section>
 
@@ -130,6 +155,10 @@ ping 192.168.2.2
 Result: Successful replies received. This confirms that routing between
 the two networks is functioning correctly.
 </p>
+
+<p><strong>Ping Result:</strong></p>
+
+<img src="../assets/images/ping-test.png" width="650">
 
 </section>
 
