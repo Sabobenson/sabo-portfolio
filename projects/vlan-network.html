@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Office Network with VLAN | Sabo Benson</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+h1{
+    text-align: center;
+    color: #4fc3f7;
+}
+h2, h3 {
+    color: #4fc3f7;
+}
+
+section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #13263a;
+    border-radius: 10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<p><a href="../index.html">← Back to Home</a></p>
+
+<h1>Office Network Design Using VLAN & Inter-VLAN Routing</h1>
+<p><strong>By Sabo Benson – Network Solutions Engineer</strong></p>
+
+<section>
+<h2>1. Problem Statement</h2>
+<p>
+A small office with multiple departments (HR, IT, Finance) was operating on a single network.
+This caused security risks, unnecessary broadcast traffic, and lack of network organization.
+Devices from different departments could not be properly controlled or segmented.
+</p>
+</section>
+
+<section>
+<h2>2. Solution</h2>
+<p>
+To solve this problem, VLANs were implemented to logically separate departments into different networks.
+Inter-VLAN routing was configured using a router to allow controlled communication between departments.
+</p>
+
+<ul>
+<li>Created VLANs for each department</li>
+<li>Assigned switch ports to VLANs</li>
+<li>Configured trunk link</li>
+<li>Implemented router-on-a-stick for routing</li>
+<li>Tested connectivity between VLANs</li>
+</ul>
+
+</section>
+
+<section>
+<h2>3. Network Topology</h2>
+
+<p><strong>Topology Diagram:</strong></p>
+
+<img src="../assets/diagrams/vlan-topology.png" width="650">
+
+</section>
+
+<section>
+<h2>4. VLAN & IP Addressing Scheme</h2>
+
+<table>
+<tr>
+<th>Department</th>
+<th>VLAN ID</th>
+<th>Network</th>
+<th>Gateway</th>
+</tr>
+
+<tr>
+<td>HR</td>
+<td>10</td>
+<td>192.168.10.0/24</td>
+<td>192.168.10.1</td>
+</tr>
+
+<tr>
+<td>IT</td>
+<td>20</td>
+<td>192.168.20.0/24</td>
+<td>192.168.20.1</td>
+</tr>
+
+<tr>
+<td>Finance</td>
+<td>30</td>
+<td>192.168.30.0/24</td>
+<td>192.168.30.1</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+<h2>5. Configuration</h2>
+
+<h3>Switch Configuration</h3>
+
+<pre>
+enable
+configure terminal
+
+vlan 10
+name HR
+
+vlan 20
+name IT
+
+vlan 30
+name FINANCE
+
+interface fa0/1
+switchport mode access
+switchport access vlan 10
+
+interface fa0/2
+switchport mode access
+switchport access vlan 20
+
+interface fa0/3
+switchport mode access
+switchport access vlan 30
+
+interface fa0/24
+switchport mode trunk
+</pre>
+
+<h3>Router Configuration</h3>
+
+<pre>
+enable
+configure terminal
+
+interface g0/0.10
+encapsulation dot1Q 10
+ip address 192.168.10.1 255.255.255.0
+
+interface g0/0.20
+encapsulation dot1Q 20
+ip address 192.168.20.1 255.255.255.0
+
+interface g0/0.30
+encapsulation dot1Q 30
+ip address 192.168.30.1 255.255.255.0
+
+interface g0/0
+no shutdown
+</pre>
+
+</section>
+
+<section>
+<h2>6. Testing & Verification</h2>
+
+<p>
+Connectivity between VLANs was tested using ping.
+Devices from different departments successfully communicated through the router.
+</p>
+
+<pre>
+ping 192.168.20.2
+ping 192.168.30.2
+</pre>
+
+<p><strong>Ping Result:</strong></p>
+
+<img src="../assets/images/vlan-ping.png" width="650">
+
+</section>
+
+<section>
+<h2>7. Skills Demonstrated</h2>
+
+<ul>
+<li>VLAN configuration</li>
+<li>Inter-VLAN routing (Router-on-a-stick)</li>
+<li>Switch port management</li>
+<li>Network segmentation</li>
+<li>Troubleshooting connectivity</li>
+</ul>
+
+</section>
+
+<section>
+<h2>8. Real-World Application</h2>
+
+<p>
+This solution is widely used in offices, campuses, and enterprises to separate departments,
+improve security, and reduce broadcast traffic while maintaining communication.
+</p>
+
+</section>
+
+<section>
+<h2>9. Services I Offer</h2>
+
+<ul>
+<li>Office network segmentation using VLANs</li>
+<li>Router and switch configuration</li>
+<li>Network performance optimization</li>
+<li>Troubleshooting and support</li>
+</ul>
+
+</section>
+
+<section>
+<h2>10. Contact</h2>
+
+<p>Email: sabobenson20@gmail.com</p>
+<p>Phone: 0745866949</p>
+
+</section>
+
+</body>
+</html>
