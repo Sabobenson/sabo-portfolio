@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Office Network with DHCP & Internet | Sabo Benson</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+h1{
+    text-align: center;
+    color: #4fc3f7;
+}
+h2, h3 {
+    color: #4fc3f7;
+}
+
+section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #13263a;
+    border-radius: 10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<p><a href="../index.html">← Back to Home</a></p>
+
+<h1>Office Network Design with VLAN, DHCP & Internet Access</h1>
+<p style="text-align: center;"><strong>By Sabo Benson – Network Engineer</strong></p>
+
+<section>
+<h2>1. Problem Statement</h2>
+<p>
+A growing office network required automatic IP assignment and internet access.
+Manual IP configuration was inefficient and error-prone, and there was no centralized
+system to manage connectivity across departments.
+</p>
+</section>
+
+<section>
+<h2>2. Objective</h2>
+<ul>
+<li>Implement VLAN-based network segmentation</li>
+<li>Automate IP assignment using DHCP</li>
+<li>Enable communication between VLANs</li>
+<li>Provide internet access using NAT</li>
+</ul>
+</section>
+
+<section>
+<h2>3. Network Topology</h2>
+
+<p>
+ISP Router → Main Router → Switch → Multiple PCs
+</p>
+
+<img src="../assets/diagrams/office-network.png" width="650">
+
+</section>
+
+<section>
+<h2>4. IP Addressing Scheme</h2>
+
+<table>
+<tr>
+<th>VLAN</th>
+<th>Department</th>
+<th>Network</th>
+<th>Gateway</th>
+</tr>
+
+<tr>
+<td>10</td>
+<td>HR</td>
+<td>192.168.10.0/24</td>
+<td>192.168.10.1</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>IT</td>
+<td>192.168.20.0/24</td>
+<td>192.168.20.1</td>
+</tr>
+
+<tr>
+<td>30</td>
+<td>Finance</td>
+<td>192.168.30.0/24</td>
+<td>192.168.30.1</td>
+</tr>
+
+<tr>
+<td>-</td>
+<td>WAN</td>
+<td>200.0.0.0/24</td>
+<td>200.0.0.1</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+<h2>5. Configuration</h2>
+
+<h3>Router Configuration</h3>
+
+<pre>
+! Inter-VLAN Routing
+interface g0/0.10
+encapsulation dot1Q 10
+ip address 192.168.10.1 255.255.255.0
+
+interface g0/0.20
+encapsulation dot1Q 20
+ip address 192.168.20.1 255.255.255.0
+
+interface g0/0.30
+encapsulation dot1Q 30
+ip address 192.168.30.1 255.255.255.0
+
+! WAN Interface
+interface g0/1
+ip address 200.0.0.2 255.255.255.0
+
+! DHCP
+ip dhcp pool HR
+network 192.168.10.0 255.255.255.0
+default-router 192.168.10.1
+
+ip dhcp pool IT
+network 192.168.20.0 255.255.255.0
+default-router 192.168.20.1
+
+ip dhcp pool FINANCE
+network 192.168.30.0 255.255.255.0
+default-router 192.168.30.1
+
+! NAT
+access-list 1 permit 192.168.0.0 0.0.255.255
+ip nat inside source list 1 interface g0/1 overload
+</pre>
+
+</section>
+
+<section>
+<h2>6. Testing & Verification</h2>
+
+<ul>
+<li>Devices successfully received IP addresses via DHCP</li>
+<li>Inter-VLAN communication verified using ping</li>
+<li>Internet connectivity tested successfully</li>
+</ul>
+
+<pre>
+ping 192.168.20.2
+ping 8.8.8.8
+</pre>
+
+<img src="../assets/images/internet.png" width="650">
+
+</section>
+
+<section>
+<h2>7. Skills Demonstrated</h2>
+
+<ul>
+<li>VLAN implementation</li>
+<li>Inter-VLAN routing</li>
+<li>DHCP configuration</li>
+<li>NAT (Network Address Translation)</li>
+<li>Network troubleshooting</li>
+</ul>
+
+</section>
+
+<section>
+<h2>8. Real-World Application</h2>
+<p>
+This type of network design is used in offices to improve scalability,
+reduce manual configuration, and enable secure communication between departments.
+</p>
+</section>
+
+<section>
+<h2>9. Services I Offer</h2>
+
+<ul>
+<li>Office network setup and configuration</li>
+<li>DHCP and IP management</li>
+<li>VLAN segmentation</li>
+<li>Internet connectivity setup</li>
+</ul>
+
+</section>
+
+<section>
+<h2>10. Contact</h2>
+
+<p>Email: sabobenson20@gmail.com</p>
+<p>Phone: 0745866949</p>
+
+</section>
+
+</body>
+</html>
